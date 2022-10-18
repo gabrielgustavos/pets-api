@@ -1,25 +1,25 @@
-/* eslint-disable import/no-unresolved */
+// eslint-disable-next-line import/no-unresolved
 import Pet from "../Pet";
-
-import React from "react";
 
 const Results = ({ pets }) => {
   return (
-    <div>
+    <div className="search">
       {!pets.length ? (
-        <h1>No pets are found!</h1>
+        <h1>No Pets Found</h1>
       ) : (
-        pets.map(({ name, animal, breed, id, images, city, state }) => (
-          <Pet
-            name={name}
-            animal={animal}
-            breed={breed}
-            key={id}
-            images={images}
-            location={(city, state)}
-            id={id}
-          />
-        ))
+        pets.map((pet) => {
+          return (
+            <Pet
+              animal={pet.animal}
+              key={pet.id}
+              name={pet.name}
+              breed={pet.breed}
+              images={pet.images}
+              location={`${pet.city}, ${pet.state}`}
+              id={pet.id}
+            />
+          );
+        })
       )}
     </div>
   );
